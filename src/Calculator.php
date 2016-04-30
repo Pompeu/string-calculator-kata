@@ -48,8 +48,7 @@ class Calculator
         $sum = 0;
         foreach ($values as $number)
         {
-            $value = intval($number);
-            $sum += $value;
+            $sum += intval($number);
         }
 
         return $sum;
