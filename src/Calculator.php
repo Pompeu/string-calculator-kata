@@ -13,6 +13,26 @@ class Calculator
         return ',';
     }
 
+    private function has_negativeNumber($numbers)
+    {
+        $negatives = [];
+
+        foreach ($numbers as $number) {
+            if($number < 0)
+            {
+                $negatives[] = $number;
+            }
+        }
+
+        if(count($negatives) > 0)
+        {
+            throw new \Exception('negative not allowed ' . implode(',',$negatives));
+        }
+
+        return;
+    }
+
+
     public function sum_str($str) {
         if($str === '')
         {
@@ -23,23 +43,13 @@ class Calculator
 
         $str = str_replace("\n",$delimiter,$str);
         $values = explode($delimiter,$str);
+        $this->has_negativeNumber($values);
 
         $sum = 0;
-        $negatives = [];
         foreach ($values as $number)
         {
             $value = intval($number);
-
-            if($value < 0)
-            {
-                $negatives[] = $number;
-            }
-
             $sum += $value;
-        }
-        if(count($negatives) > 0)
-        {
-            throw new \Exception('negative not allowed ' . implode(',',$negatives));
         }
 
         return $sum;
