@@ -1,4 +1,7 @@
-<phpunit bootstrap="vendor/autoload.php">
+<phpunit 
+  bootstrap="vendor/autoload.php"
+  colors="true"
+  >
   <testsuites>
     <testsuite name="Calculator">
       <directory>tests</directory>
@@ -13,4 +16,7 @@
       <directory>src/</directory>
     </whitelist>
   </filter>
+  <logging>
+    <log type="coverage-clover" target="./cover.xml"/>
+  </logging>
 </phpunit>
