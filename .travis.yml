@@ -6,4 +6,6 @@ before_script:
   - travis_retry  composer self-update
   - composer install
 
-script: vendor/bin/phpunit 
+script: 
+  - vendor/bin/phpunit 
+  - php coverage-checker.php cover.xml 80
